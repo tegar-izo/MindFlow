@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Daily Journal - Material You</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="app">
+            <section id="tab-create" class="tab-content active">
+                <h1 class="page-title">Jurnal Hari Ini</h1>
+                <p id="today-date" class="subtitle"></p>
+
+                <div class="mood-selector">
+                    <p>Bagaimana perasaanmu?</p>
+                    <div class="mood-options">
+                        <label class="mood-chip">
+                            <input
+                                type="radio"
+                                name="mood"
+                                value="Senang"
+                                checked
+                            />
+                            <span>Senang</span>
+                        </label>
+                        <label class="mood-chip">
+                            <input type="radio" name="mood" value="Biasa" />
+                            <span>Biasa</span>
+                        </label>
+                        <label class="mood-chip">
+                            <input type="radio" name="mood" value="Sedih" />
+                            <span>Sedih</span>
+                        </label>
+                    </div>
+                </div>
+
+                <textarea
+                    id="journal-input"
+                    placeholder="Tulis sesuatu... (Baris pertama akan menjadi judul)"
+                ></textarea>
+                <button id="btn-save" class="btn-primary">Simpan Jurnal</button>
+            </section>
+
+            <section id="tab-archive" class="tab-content">
+                <h1 class="page-title">Arsip Jurnal</h1>
+                <div id="archive-grid" class="grid-container"></div>
+            </section>
+
+            <section id="tab-settings" class="tab-content">
+                <h1 class="page-title">Pengaturan</h1>
+                <div class="settings-card">
+                    <p>
+                        Hapus seluruh data jurnal dari perangkat ini. Tindakan
+                        ini tidak dapat dibatalkan.
+                    </p>
+                    <button id="btn-reset" class="btn-danger">
+                        Hapus Semua Data
+                    </button>
+                </div>
+            </section>
+
+            <div id="detail-modal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modal-date"></h2>
+                        <span id="modal-mood" class="chip"></span>
+                        <button id="btn-close-modal" class="icon-button">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                    <div id="modal-body" class="modal-body"></div>
+
+                    <div id="comment-section" class="comment-section hidden">
+                        <h3>Komentar</h3>
+                        <div id="comment-list"></div>
+                        <div class="comment-input-area">
+                            <input
+                                type="text"
+                                id="comment-input"
+                                placeholder="Tambahkan komentar..."
+                            />
+                            <button
+                                id="btn-add-comment"
+                                class="btn-primary small"
+                            >
+                                Kirim
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="bottom-nav">
+                <button class="nav-item active" data-target="tab-create">
+                    <span class="material-icons">edit</span>
+                    <span>Create</span>
+                </button>
+                <button class="nav-item" data-target="tab-archive">
+                    <span class="material-icons">inventory_2</span>
+                    <span>Arsip</span>
+                </button>
+                <button class="nav-item" data-target="tab-settings">
+                    <span class="material-icons">settings</span>
+                    <span>Pengaturan</span>
+                </button>
+            </nav>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
