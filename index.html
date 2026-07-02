@@ -1,127 +1,132 @@
 <!doctype html>
 <html lang="id">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MindFlow - Daily Journal</title>
-        <meta name="theme-color" content="#82C28F" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MindFlow - Daily Journal</title>
+    <meta name="theme-color" content="#82C28F" />
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div id="app">
-            <section id="tab-create" class="tab-content active">
-                <h1 class="page-title">Jurnal Hari Ini</h1>
-                <p id="today-date" class="subtitle"></p>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app">
+        <!-- TAB: CREATE -->
+        <section id="tab-create" class="tab-content active">
+            <h1 class="page-title">Jurnal Hari Ini</h1>
+            <p id="today-date" class="subtitle"></p>
 
-                <div class="mood-selector">
-                    <p>Bagaimana perasaanmu?</p>
-                    <div class="mood-options">
-                        <label class="mood-chip">
-                            <input
-                                type="radio"
-                                name="mood"
-                                value="Senang"
-                                checked
-                            />
-                            <span>Senang</span>
-                        </label>
-                        <label class="mood-chip">
-                            <input 
-                              type="radio"
-                              name="mood" 
-                              value="Biasa" />
-                            <span>Biasa</span>
-                        </label>
-                        <label class="mood-chip">
-                            <input 
-                              type="radio"
-                              name="mood" 
-                              value="Sedih" />
-                            <span>Sedih</span>
-                        </label>
-                    </div>
-                </div>
-
-                <textarea
-                    id="journal-input"
-                    placeholder="Tulis sesuatu... (Baris pertama akan menjadi judul)"
-                ></textarea>
-                <button id="btn-save" class="btn-primary">Simpan Jurnal</button>
-            </section>
-
-            <section id="tab-archive" class="tab-content">
-                <h1 class="page-title">Arsip Jurnal</h1>
-                <div id="archive-grid" class="grid-container"></div>
-            </section>
-
-            <section id="tab-settings" class="tab-content">
-                <h1 class="page-title">Pengaturan</h1>
-                <div class="settings-card">
-                    <p>
-                        Hapus seluruh data jurnal dari perangkat ini. Tindakan
-                        ini tidak dapat dibatalkan.
-                    </p>
-                    <button id="btn-reset" class="btn-danger">
-                        Hapus Semua Data
-                    </button>
-                </div>
-            </section>
-
-            <div id="detail-modal" class="modal-overlay hidden">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span id="modal-mood" class="chip"></span>
-                        <h2 id="modal-date"></h2>
-                        <button id="btn-close-modal" class="icon-button">
-                            <span class="material-icons">close</span>
-                        </button>
-                    </div>
-                    <div id="modal-body" class="modal-body"></div>
-
-                    <div id="comment-section" class="comment-section hidden">
-                        <h3>Komentar</h3>
-                        <div id="comment-list"></div>
-                        <div class="comment-input-area">
-                            <input
-                                type="text"
-                                id="comment-input"
-                                placeholder="Tambahkan komentar..."
-                            />
-                            <button
-                                id="btn-add-comment"
-                                class="btn-primary small"
-                            >
-                                Kirim
-                            </button>
-                        </div>
-                    </div>
+            <div class="mood-selector">
+                <p>Bagaimana perasaanmu?</p>
+                <div class="mood-options">
+                    <label class="mood-chip">
+                        <input type="radio" name="mood" value="Senang" checked />
+                        <span>Senang</span>
+                    </label>
+                    <label class="mood-chip">
+                        <input type="radio" name="mood" value="Biasa" />
+                        <span>Biasa</span>
+                    </label>
+                    <label class="mood-chip">
+                        <input type="radio" name="mood" value="Sedih" />
+                        <span>Sedih</span>
+                    </label>
                 </div>
             </div>
 
-            <nav class="bottom-nav">
-                <button class="nav-item active" data-target="tab-create">
-                    <span class="material-icons">edit</span>
-                    <span>Create</span>
-                </button>
-                <button class="nav-item" data-target="tab-archive">
-                    <span class="material-icons">inventory_2</span>
-                    <span>Arsip</span>
-                </button>
-                <button class="nav-item" data-target="tab-settings">
-                    <span class="material-icons">settings</span>
-                    <span>Pengaturan</span>
-                </button>
-            </nav>
+            <textarea id="journal-input" placeholder="Tulis sesuatu... (Baris pertama akan menjadi judul)" inputmode="text"></textarea>
+            <button id="btn-save" class="btn-primary">Simpan Jurnal</button>
+        </section>
+
+        <!-- TAB: ARCHIVE -->
+        <section id="tab-archive" class="tab-content">
+            <h1 class="page-title">Arsip Jurnal</h1>
+            <div id="archive-grid" class="grid-container"></div>
+        </section>
+
+        <!-- TAB: SETTINGS -->
+        <section id="tab-settings" class="tab-content">
+            <h1 class="page-title">Pengaturan</h1>
+            <div class="settings-card">
+                <h3>Data Management</h3>
+                <button class="btn-secondary" id="btn-export">Export Data (JSON)</button>
+                <button class="btn-secondary" id="btn-import-trigger">Import Data (JSON)</button>
+                <input type="file" id="import-input" accept=".json" style="display: none" />
+            </div>
+            <div class="settings-card">
+                <h3>Reset Data</h3>
+                <p>Hapus seluruh data jurnal dari perangkat ini. Tindakan ini tidak dapat dibatalkan.</p>
+                <button id="btn-reset" class="btn-danger">Hapus Semua Data</button>
+            </div>
+        </section>
+
+        <!-- =============================================== -->
+        <!-- MODAL DETAIL (DENGAN REFLEKSI + TAGS + CARDS)   -->
+        <!-- =============================================== -->
+        <div id="detail-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <!-- HEADER -->
+                <div class="modal-header">
+                    <span id="modal-mood" class="chip"></span>
+                    <h2 id="modal-date"></h2>
+                    <button id="btn-close-modal" class="icon-button" aria-label="Tutup modal">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+
+                <!-- BAGIAN 1: ENTRI ASLI (JURNAL LAMPU) -->
+                <div class="original-entry">
+                    <div class="original-label">📖 Entri Asli</div>
+                    <div id="modal-body" class="modal-body"></div>
+                </div>
+
+                <!-- PEMBAGI VISUAL -->
+                <div class="divider"></div>
+
+                <!-- BAGIAN 2: DAFTAR REFLEKSI -->
+                <div id="reflection-section" class="reflection-section hidden">
+                    <div class="reflection-header">
+                        <span class="reflection-title">🧠 Refleksi Masa Lampau</span>
+                        <span id="reflection-count" class="reflection-count"></span>
+                    </div>
+                    <div id="reflection-list" class="reflection-list"></div>
+
+                    <!-- INPUT REFLEKSI BARU (hanya tampil jika bukan jurnal hari ini) -->
+                    <div id="reflection-input-area" class="reflection-input-area">
+                        <textarea id="reflection-text" placeholder="Tulis refleksi terhadap masa lalu..." inputmode="text" rows="2"></textarea>
+                        <div class="reflection-tags-row">
+                            <input type="text" id="reflection-tags" placeholder="Tag (pisah koma, misal: #growth, #kerja)" inputmode="text" />
+                            <button id="btn-add-reflection" class="btn-primary small">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESAN UNTUK JURNAL HARI INI -->
+                <div id="today-message" class="today-message hidden">
+                    <span class="material-icons">wb_twilight</span>
+                    <p>Biarkan waktu berlalu. <br/>Kamu baru bisa merefleksikan jurnal ini besok.</p>
+                </div>
+            </div>
         </div>
-        <script src="script.js"></script>
-    </body>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-target="tab-create" aria-label="Buat jurnal">
+                <span class="material-icons">edit</span>
+                <span>Create</span>
+            </button>
+            <button class="nav-item" data-target="tab-archive" aria-label="Arsip">
+                <span class="material-icons">inventory_2</span>
+                <span>Arsip</span>
+            </button>
+            <button class="nav-item" data-target="tab-settings" aria-label="Pengaturan">
+                <span class="material-icons">settings</span>
+                <span>Pengaturan</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
